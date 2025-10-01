@@ -1,0 +1,421 @@
+/* ============================================= */
+/* 1. DEFINIÇÃO DOS TEMAS (VARIÁVEIS DE COR)     */
+/* ============================================= */
+:root {
+    --bg-color: #f0f4f8;
+    --card-bg-color: #ffffff;
+    --text-color-primary: #1a202c;
+    --text-color-secondary: #a0aec0;
+    --border-color: #e2e8f0;
+    --accent-color: #4F46E5;
+    --accent-hover-color: #4338CA;
+    --tag-produtivo-bg: #c6f6d5;
+    --tag-produtivo-text: #22543d;
+    --tag-improdutivo-bg: #e2e8f0;
+    --tag-improdutivo-text: #4a5568;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --switch-bg-light: #00a6ff;
+    --switch-bg-dark: #2a2a2a;
+    --sun-color: #ffcf48;
+    --moon-color: #fff;
+}
+
+.dark-mode {
+     --bg-color: #111827; 
+    --card-bg-color: #1F2937; 
+    --text-color-primary: #F9FAFB; 
+    --text-color-secondary: #9CA3AF; 
+    --border-color: #374151; 
+    
+    --accent-color: #F97316;
+    --accent-hover-color: #EA580C;
+
+    --tag-produtivo-bg: #064E3B;
+    --tag-produtivo-text: #6EE7B7;
+    --tag-improdutivo-bg: #374151;
+    --tag-improdutivo-text: #D1D5DB;
+    
+    --shadow-color: rgba(0, 0, 0, 0.3);
+
+    /* Cores para o seletor de tema no estilo AutoU */
+    --switch-bg-light: #3B82F6; /* Azul para o 'dia' */
+    --switch-bg-dark: #374151; /* Cinza para a 'noite' */
+    --sun-color: #FBBF24;
+    --moon-color: #E5E7EB;
+}
+
+/* ============================================= */
+/* 2. ESTILOS GLOBAIS E BASE                     */
+/* ============================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding-top: 80px;
+    /* MUDANÇA: Usando variáveis */
+    background-color: var(--bg-color);
+    color: var(--text-color-primary);
+    /* Transição suave de cores */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.page-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 80px); 
+    padding: 0.1rem 1rem;
+    width: 100%;
+}
+
+/* ============================================= */
+/* 3. LAYOUT (NAVBAR E WRAPPER)                  */
+/* ============================================= */
+.navbar {
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background-color: var(--card-bg-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    transition: background-color 0.3s ease;
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem 0;
+}
+
+/* ============================================= */
+/* 4. COMPONENTES (CARDS, FORMULÁRIOS, BOTÕES)   */
+/* ============================================= */
+.card {
+    padding: 2.5rem;
+    border-radius: 12px;
+    background-color: var(--card-bg-color);
+    box-shadow: 0 10px 25px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.form-card {
+    flex: 1;
+    min-width: 450px;
+    max-width: 700px;
+}
+
+.results-card {
+    flex: 0.9;
+    position: sticky;
+    top: 120px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+.navbar-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    color: var(--text-color-secondary);
+}
+
+.navbar-links a:hover {
+    color: var(--accent-color);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+header h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+header p {
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    color: var(--text-color-secondary);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-color-primary);
+}
+
+textarea, input[type="file"] {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    border-radius: 8px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color-primary);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 0.8rem;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    background-color: var(--accent-color);
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    background-color: var(--accent-hover-color);
+}
+
+.results h2, .results-card h2 {
+    text-align: center;
+    color: var(--text-color-primary);
+    margin-bottom: 2rem;
+}
+
+.result-item {
+    background-color: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.result-item h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    color: var(--text-color-primary);
+}
+
+.suggestion {
+    font-size: 1rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    color: var(--text-color-primary);
+}
+
+.classification-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.produtivo {
+    background-color: var(--tag-produtivo-bg);
+    color: var(--tag-produtivo-text);
+}
+
+.improdutivo {
+    background-color: var(--tag-improdutivo-bg);
+    color: var(--tag-improdutivo-text);
+}
+
+footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-color-secondary);
+}
+
+/* ============================================= */
+/* 5. SELETOR DE TEMA ANIMADO                    */
+/* ============================================= */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 4em;
+  height: 2.2em;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2a2a2a;
+  transition: 0.4s;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.2em;
+  width: 1.2em;
+  border-radius: 20px;
+  left: 0.5em;
+  bottom: 0.5em;
+  transition: 0.4s;
+  transition-timing-function: cubic-bezier(0.81, -0.04, 0.38, 1.5);
+  box-shadow: inset 8px -4px 0px 0px #fff;
+}
+
+.switch input:checked + .slider {
+  background-color: #00a6ff;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(1.8em);
+  box-shadow: inset 15px -4px 0px 15px #ffcf48;
+}
+
+.star {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  width: 5px;
+  transition: all 0.4s;
+  height: 5px;
+}
+
+.star_1 {
+  left: 2.5em;
+  top: 0.5em;
+}
+
+.star_2 {
+  left: 2.2em;
+  top: 1.2em;
+}
+
+.star_3 {
+  left: 3em;
+  top: 0.9em;
+}
+
+.switch input:checked ~ .slider .star {
+  opacity: 0;
+}
+
+.cloud {
+  width: 3.5em;
+  position: absolute;
+  bottom: -1.4em;
+  left: -1.1em;
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+.switch input:checked ~ .slider .cloud {
+  opacity: 1;
+}
+
+/* ======================================= */
+/* 6. ESTILIZAÇÃO DO BOTÃO DE UPLOAD DE ARQUIVO */
+/* ======================================= */
+
+.file-upload-wrapper input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    width: 1px;
+    height: 1px;
+}
+
+.file-upload-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem; 
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+
+    background-color: var(--border-color);
+    color: var(--text-color-primary);
+    border: 1px solid var(--border-color);
+}
+
+.custom-file-upload:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+}
+
+#file-name {
+    font-style: italic;
+    color: var(--text-color-secondary);
+}
+
+/* ============================================= */
+/* 7. ANIMAÇÕES                                  */
+/* ============================================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
