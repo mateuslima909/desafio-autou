@@ -2,5 +2,5 @@ flask
 requests
 python-dotenv
 PyPDF2
+google-genai
 gunicorn
-google-generativeai
