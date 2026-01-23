@@ -104,4 +104,4 @@ Sugestões e pull requests são bem-vindos! Sinta-se à vontade para abrir uma i
 
 ## 📝 Licença
 
-Desenvolvido por **[Mateus Lima](https://www.linkedin.com/in/mateuslimasantos)**.
+Desenvolvido por **[Mateus Lima](https://www.linkedin.com/in/mateuslima-santos)**.
