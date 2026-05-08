@@ -1,44 +1,46 @@
 # 📧 AI Email Classifier & Responder
 
-> **Classificação inteligente e respostas automáticas para emails usando Google Gemini AI.**
+> **Classificação inteligente e respostas automáticas para emails com experiência SaaS Premium e Google Gemini AI.**
 
 ![Status do Projeto](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Flask](https://img.shields.io/badge/Flask-3.0-green)
 ![Gemini AI](https://img.shields.io/badge/AI-Gemini_2.5_Flash-orange)
+![UI](https://img.shields.io/badge/UI-Glassmorphism-blueviolet)
 
 ## 📖 Sobre o Projeto
 
-O **AI Email Classifier** é uma aplicação web Full Stack desenvolvida para otimizar a produtividade no gerenciamento de emails.
+O **AI Email Classifier** é uma aplicação web Full Stack de alto nível desenvolvida para transformar o gerenciamento de emails em uma tarefa fluida e inteligente. 
 
-A ferramenta utiliza a inteligência artificial do **Google Gemini (Modelo 2.5 Flash)** para ler o conteúdo de emails (via texto ou upload de arquivos PDF/TXT), classificar a urgência e o contexto, e gerar automaticamente uma sugestão de resposta profissional.
+Diferente de ferramentas simples, este projeto foca em **User Experience (UX)**, utilizando uma interface inspirada em plataformas SaaS modernas. O motor é alimentado pelo **Google Gemini 2.5 Flash**, garantindo análises contextuais precisas em milissegundos.
 
 ### ✨ Funcionalidades Principais
 
-* **Classificação Inteligente:** Distingue automaticamente entre emails **Produtivos** (Trabalho, Projetos, Reuniões) e **Improdutivos** (Spam, Marketing, Social).
-* **Geração de Respostas:** Cria rascunhos de resposta contextualizados, adotando personas profissionais (ex: Assistente Executivo ou RH).
-* **Leitura de Arquivos:** Suporte para upload e análise de arquivos `.txt` e `.pdf` (extração de texto).
-* **Interface Moderna:** Design responsivo com suporte a **Dark Mode** e **Light Mode**.
-* **Alta Performance:** Otimizado com o modelo Gemini 2.5 Flash para respostas quase instantâneas.
+* **Classificação Inteligente:** Distingue automaticamente entre emails **Produtivos** e **Improdutivos** com base no contexto real da mensagem.
+* **Interface Premium (Glassmorphism):** Design sofisticado com efeitos de transparência, desfoque de fundo e tipografia imponente.
+* **Layout Side-by-Side:** Grid de duas colunas que permite visualizar a entrada de dados e o resultado da IA simultaneamente, sem necessidade de scroll excessivo.
+* **Geração de Respostas Profissionais:** Cria rascunhos de resposta prontos para uso, mantendo o tom de voz executivo.
+* **Análise Multimodal de Arquivos:** Suporte para extração e leitura de arquivos `.pdf` e `.txt`.
+* **Feedback de Processamento:** Overlay de carregamento integrado para melhorar a percepção de performance durante as chamadas de IA.
 
 ---
 
 ## 📸 Screenshots
 
-
-|<img src="assets/print-dark.png" width="400" alt="Dark Mode">|<img src="assets/print-light.png" width="400" alt="Light Mode">|
+|<img src="assets/print-start.png" width="400" alt="Dashboard Inicial">|<img src="assets/print-result.png" width="400" alt="Resultado da Análise">|
 |:---:|:---:|
-|**Dark Mode**|**Light Mode**|
+|**Dashboard Inicial (UI Premium)**|**Análise em Tempo Real**|
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-* **Back-end:** Python, Flask
+* **Back-end:** Python 3.12, Flask
 * **IA / LLM:** Google Gemini API (`google-generativeai`)
+* **Front-end:** HTML5, CSS3 (Glassmorphism & CSS Grid), JavaScript (Vanilla)
+* **Ícones:** Lucide Icons
 * **Manipulação de Arquivos:** PyPDF2
-* **Front-end:** HTML5, CSS3 (Variáveis CSS para temas), JavaScript
-* **Ambiente:** Dotenv para gestão de variáveis de ambiente
+* **Ambiente:** Dotenv para gestão de segredos e chaves de API
 
 ---
 
@@ -47,7 +49,7 @@ A ferramenta utiliza a inteligência artificial do **Google Gemini (Modelo 2.5 F
 ### Pré-requisitos
 
 * Python 3.x instalado.
-* Uma chave de API do Google AI Studio (Gemini).
+* Chave de API do Google AI Studio.
 
 ### Passo a Passo
 
@@ -57,7 +59,7 @@ A ferramenta utiliza a inteligência artificial do **Google Gemini (Modelo 2.5 F
     cd email-classifier
     ```
 
-2.  **Crie um ambiente virtual (Opcional, mas recomendado):**
+2.  **Ambiente Virtual:**
     ```bash
     python -m venv venv
     # Windows
@@ -66,41 +68,39 @@ A ferramenta utiliza a inteligência artificial do **Google Gemini (Modelo 2.5 F
     source venv/bin/activate
     ```
 
-3.  **Instale as dependências:**
+3.  **Instalação:**
     ```bash
     pip install -r requirements.txt
     ```
 
-4.  **Configure a API Key:**
-    * Crie um arquivo `.env` na raiz do projeto.
+4.  **Variáveis de Ambiente:**
+    * Crie um arquivo `.env` na raiz.
     * Adicione sua chave:
         ```env
-        GEMINI_API_KEY=sua_chave_aqui_sem_aspas
+        GEMINI_API_KEY=sua_chave_aqui
         ```
 
-5.  **Execute a aplicação:**
+5.  **Run:**
     ```bash
     python app.py
     ```
-    * Acesse no navegador: `http://127.0.0.1:5000`
+    * Acesse: `http://127.0.0.1:5000`
 
 ---
 
-## 🗺️ Roadmap (Próximos Passos)
+## 🗺️ Roadmap de Evolução
 
-Este projeto está em evolução constante! Aqui estão as atualizações planejadas para as próximas versões:
-
-- [ ] **Deploy:** Publicação da aplicação em ambiente de produção (Render/Vercel).
-- [ ] **Testes Automatizados:** Implementação de testes unitários para garantir a estabilidade da classificação.
-- [ ] **Novas Categorias:** Adição de classificações mais granulares, como *"Lembrete de Atenção"* e *"Urgente"*.
-- [ ] **Histórico:** Salvar o histórico de emails analisados localmente.
-- [ ] **Upload de Imagens:** Suporte para OCR em prints de email usando a capacidade multimodal do Gemini.
+- [ ] **Structured Output:** Transição para respostas em JSON para extrair metadados (urgência, sentimento).
+- [ ] **Integração com Gmail API:** Leitura direta da caixa de entrada via OAuth2.
+- [ ] **Memória de Contexto (RAG):** Banco de vetores para aprender o tom de voz do usuário com base em emails passados.
+- [ ] **Persistência de Dados:** Histórico de análises salvo em banco de dados local (SQLite/PostgreSQL).
+- [ ] **Deploy:** Hospedagem em nuvem (Render ou Vercel).
 
 ---
 
 ## 🤝 Contribuição
 
-Sugestões e pull requests são bem-vindos! Sinta-se à vontade para abrir uma issue se encontrar algum problema.
+Sugestões para melhorar a IA ou o design são sempre bem-vindas! Sinta-se à vontade para abrir uma issue.
 
 ## 📝 Licença
 

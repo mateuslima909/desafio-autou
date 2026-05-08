@@ -1,52 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classificador de Emails</title>
-    
+    <title>EmailClassifier | Inteligência em Fluxo</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
+
+    <div id="loading-overlay" class="hidden">
+        <div class="loader"></div>
+        <div class="loading-content">
+            <h3>Analisando Email</h3>
+            <p>Processando o contexto da mensagem...</p>
+        </div>
+    </div>
 
     <nav class="navbar">
         <div class="navbar-content">
-            <a href="/" class="navbar-brand">EmailClassifier</a>
+            <a href="/" class="navbar-brand">
+                <div class="brand-icon"><i data-lucide="zap"></i></div>
+                <div class="brand-text">Email<span>Classifier</span></div>
+            </a>
+
             <ul class="navbar-links">
-
-                <li>
-                    <label class="switch" id="theme-toggle-label" title="Alternar Tema Claro/Escuro">
-                        <input checked="true" id="checkbox" type="checkbox" />
-                        <span class="slider">
-                            <div class="star star_1"></div>
-                            <div class="star star_2"></div>
-                            <div class="star star_3"></div>
-                            <svg viewBox="0 0 16 16" class="cloud_1 cloud">
-                              <path
-                                transform="matrix(.77976 0 0 .78395-299.99-418.63)"
-                                fill="#fff"
-                                d="m391.84 540.91c-.421-.329-.949-.524-1.523-.524-1.351 0-2.451 1.084-2.485 2.435-1.395.526-2.388 1.88-2.388 3.466 0 1.874 1.385 3.423 3.182 3.667v.034h12.73v-.006c1.775-.104 3.182-1.584 3.182-3.395 0-1.747-1.309-3.186-2.994-3.379.007-.106.011-.214.011-.322 0-2.707-2.271-4.901-5.072-4.901-2.073 0-3.856 1.202-4.643 2.925"
-                              ></path>
-                            </svg>
-                        </span>
-                    </label>
-                </li>
-
                 <li>
                     <a href="https://github.com/MateusLima909" target="_blank" title="Meu GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" role="img" aria-label="GitHub" viewBox="0 0 16 16">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" role="img"
+                            aria-label="GitHub" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
                         </svg>
                     </a>
                 </li>
                 <li>
                     <a href="https://www.linkedin.com/in/mateuslima-santos/" target="_blank" title="Meu LinkedIn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" role="img" aria-label="LinkedIn" viewBox="0 0 16 16">
-                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" role="img"
+                            aria-label="LinkedIn" viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
                         </svg>
                     </a>
                 </li>
@@ -54,102 +55,130 @@
         </div>
     </nav>
 
-    <div class="page-content">
-        <main class="content-wrapper">
-            
-            <div class="card form-card">
-                <header>
-                    <h2>🚀 AI Email Classifier</h2>
-                    <p>Cole o texto do seu email ou faça o upload de um arquivo para receber uma classificação e uma sugestão de resposta gerada por IA.</p>
-                </header>
+    <main class="dashboard">
+        <section class="input-side">
+            <div class="hero">
+                <h1 class="main-title">
+                    Classificação <br>
+                    <span>Inteligente de Emails</span>
+                </h1>
+                <p class="main-subtitle">
+                    Analise contexto, urgência e gere respostas automáticas utilizando IA generativa.
+                </p>
+            </div>
 
-                <form action="/" method="post" enctype="multipart/form-data">
+            <div class="glass-card">
+                <form id="analysis-form" action="/" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="email_text">Corpo do Email</label>
-                        <textarea name="email_text" id="email_text" rows="10" placeholder="Ex: Olá, gostaria de saber o status do meu pedido 123...">{{ email_text or '' }}</textarea>
+                        <label for="email_text">
+                            <i data-lucide="mail"></i>
+                            Conteúdo do Email
+                        </label>
+                        <textarea name="email_text" id="email_text"
+                            placeholder="Cole aqui o conteúdo do email...">{{ email_text or '' }}</textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="email_file">Ou faça upload de um arquivo (.txt ou .pdf)</label>
-                        <div class="file-upload-wrapper">
-                            <label for="email_file" class="custom-file-upload">
-                                Escolher Arquivo
-                            </label>
-                            <span id="file-name">Nenhum arquivo selecionado</span>
-                            <input type="file" name="email_file" id="email_file" accept=".txt,.pdf">
+
+                    <div class="upload-area">
+                        <label for="email_file" class="custom-file-upload">
+                            <i data-lucide="upload-cloud"></i>
+                            Upload PDF/TXT
+                        </label>
+                        <input type="file" name="email_file" id="email_file" class="hidden-input" accept=".txt,.pdf">
+                        <small id="file-name">Nenhum arquivo selecionado</small>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        <span>Analisar com IA</span>
+                        <i data-lucide="zap"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section class="right-panel">
+            {% if classification %}
+            <div class="glass-card result-card animated-up">
+                <div class="result-top">
+                    <div class="result-header">
+                        <span class="result-label">Resultado da Análise</span>
+                        <div
+                            class="classification-tag {{ 'produtivo' if 'Produtivo' in classification else 'improdutivo' }}">
+                            <i
+                                data-lucide="{{ 'check-circle' if 'Produtivo' in classification else 'alert-circle' }}"></i>
+                            {{ classification }}
                         </div>
                     </div>
-                    <button type="submit">Analisar com IA</button>
-                </form>
-
-                <footer>
-                    <p>Desafio Prático - Desenvolvimento</p>
-                </footer>
-            </div>
-
-            {% if classification %}
-            <div class="card results-card">
-                <h2>Resultados da Análise</h2>
-                <div class="result-item">
-                    <h3>Classificação:</h3>
-                    <p class="classification-tag {{ 'produtivo' if 'Produtivo' in classification else 'improdutivo' }}">
-                        {{ classification }}
-                    </p>
                 </div>
-                <div class="result-item">
-                    <h3>Sugestão de Resposta:</h3>
-                    <p class="suggestion">{{ suggestion }}</p>
+
+                <div class="response-box">
+                    <div class="box-header">
+                        <div>
+                            <h3>Sugestão de Resposta</h3>
+                            <p>Resposta gerada automaticamente pela IA</p>
+                        </div>
+                        <button class="btn-copy" onclick="copyResponse()" type="button" title="Copiar resposta">
+                            <i data-lucide="copy"></i>
+                        </button>
+                    </div>
+                    <div class="suggestion-text" id="suggestion-content">{{ suggestion }}</div>
                 </div>
             </div>
+
+            {% else %}
+
+            <div class="glass-card result-card empty-state">
+                <div class="empty-state-content">
+                    <div class="empty-icon"><i data-lucide="sparkles"></i></div>
+                    <h2>Pronto para análise</h2>
+                    <p>A IA irá classificar o email e gerar automaticamente uma sugestão de resposta baseada no contexto
+                        enviado.</p>
+                </div>
+            </div>
+
             {% endif %}
-
-        </main>
-    </div>
+        </section>
+    </main>
 
     <script>
-        (function() {
-            
-            const themeCheckbox = document.getElementById('checkbox');
-            const body = document.body;
+        lucide.createIcons();
 
-            const applyTheme = (theme) => {
-                if (theme === 'dark') {
-                    body.classList.add('dark-mode');
-                    if(themeCheckbox) themeCheckbox.checked = false;
-                } else {
-                    body.classList.remove('dark-mode');
-                    if(themeCheckbox) themeCheckbox.checked = true;
-                }
-            };
+        // 1. Feedback Visual do Nome do Arquivo selecionado
+        const fileInput = document.getElementById('email_file');
+        const fileName = document.getElementById('file-name');
 
-            const savedTheme = localStorage.getItem('theme');
+        fileInput.addEventListener('change', () => {
+            fileName.textContent = fileInput.files[0] ? fileInput.files[0].name : 'Nenhum arquivo selecionado';
+        });
 
-            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        // 2. Exibição do Overlay de Carregamento no Submit do Formulário
+        const form = document.getElementById('analysis-form');
+        const overlay = document.getElementById('loading-overlay');
 
-            const initialTheme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
-            applyTheme(initialTheme);
+        form.addEventListener('submit', () => {
+            overlay.classList.remove('hidden');
+        });
 
-            if(themeCheckbox) {
-                themeCheckbox.addEventListener('change', () => {
-                    const newTheme = themeCheckbox.checked ? 'light' : 'dark';
-                    applyTheme(newTheme);
-                    localStorage.setItem('theme', newTheme);
-                });
-            }
+        // 3. Função para Copiar a Resposta da IA e dar feedback no botão
+        function copyResponse() {
+            const text = document.getElementById('suggestion-content').innerText;
 
-            const fileInput = document.getElementById('email_file');
-            const fileNameDisplay = document.getElementById('file-name');
+            navigator.clipboard.writeText(text).then(() => {
+                const button = document.querySelector('.btn-copy');
+                const originalIcon = button.innerHTML;
 
-            if (fileInput) {
-                fileInput.addEventListener('change', () => {
-                    if (fileInput.files.length > 0) {
-                        fileNameDisplay.textContent = fileInput.files[0].name;
-                    } else {
-                        fileNameDisplay.textContent = 'Nenhum arquivo selecionado';
-                    }
-                });
-            }
-        })();
+                // Altera para ícone de check temporariamente
+                button.innerHTML = '<i data-lucide="check"></i>';
+                lucide.createIcons();
+
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                    lucide.createIcons();
+                }, 1500);
+            }).catch(err => {
+                console.error('Erro ao copiar texto: ', err);
+            });
+        }
     </script>
-
 </body>
+
 </html>
