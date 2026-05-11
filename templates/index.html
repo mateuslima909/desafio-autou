@@ -89,7 +89,6 @@
 
                     <button type="submit" class="btn-primary">
                         <span>Analisar com IA</span>
-                        <i data-lucide="zap"></i>
                     </button>
                 </form>
             </div>
@@ -108,6 +107,18 @@
                             {{ classification }}
                         </div>
                     </div>
+
+                    {% if confidence %}
+                    <div class="confidence-wrapper">
+                        <div class="confidence-info">
+                            <span>Confiança da Análise</span>
+                            <span class="confidence-percent">{{ confidence }}%</span>
+                        </div>
+                        <div class="confidence-bar-container">
+                            <div class="confidence-bar-fill" style="width: {{ confidence }}%;"></div>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
 
                 <div class="response-box">
