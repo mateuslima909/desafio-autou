@@ -1,6 +1,6 @@
 # 📧 AI Email Classifier & Responder
 
-> **Classificação inteligente e respostas automáticas para emails com experiência SaaS Premium e Google Gemini AI.**
+> **Classificação inteligente e respostas automáticas para emails com experiência SaaS e Google Gemini AI.**
 
 ![Status do Projeto](https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow)
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
@@ -18,7 +18,7 @@ Diferente de ferramentas simples, este projeto foca em **User Experience (UX)**,
 
 * **Classificação Inteligente:** Distingue automaticamente entre emails **Produtivos** e **Improdutivos** com base no contexto real da mensagem.
 * **Interface Premium (Glassmorphism):** Design sofisticado com efeitos de transparência, desfoque de fundo e tipografia imponente.
-* **Layout Side-by-Side:** Grid de duas colunas que permite visualizar a entrada de dados e o resultado da IA simultaneamente, sem necessidade de scroll excessivo.
+* **Layout Side-by-Side:** Grid de duas colunas que permite visualizar a entrada de dados e o resultado da IA simultaneamente.
 * **Geração de Respostas Profissionais:** Cria rascunhos de resposta prontos para uso, mantendo o tom de voz executivo.
 * **Análise Multimodal de Arquivos:** Suporte para extração e leitura de arquivos `.pdf` e `.txt`.
 * **Feedback de Processamento:** Overlay de carregamento integrado para melhorar a percepção de performance durante as chamadas de IA.
@@ -29,7 +29,7 @@ Diferente de ferramentas simples, este projeto foca em **User Experience (UX)**,
 
 |<img src="assets/print-start.png" width="400" alt="Dashboard Inicial">|<img src="assets/print-result.png" width="400" alt="Resultado da Análise">|
 |:---:|:---:|
-|**Dashboard Inicial (UI Premium)**|**Análise em Tempo Real**|
+|**Dashboard Inicial**|**Análise em Tempo Real**|
 
 ---
 
